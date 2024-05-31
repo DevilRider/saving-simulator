@@ -1,0 +1,30 @@
+[
+  {
+    "type": "fixed-term",
+    "name": "D7",
+    "period": 7,
+    "subscriptionDays": 0,
+    "settlementDays": 0,
+    "annualInterestRate": "0.0264",
+    "limit": -1
+  },
+  {
+    "type": "fixed-term",
+    "name": "D180",
+    "period": 180,
+    "subscriptionDays": 2,
+    "settlementDays": 7,
+    "annualInterestRate": "0.0285",
+    "limit": -1
+  },
+  {
+    "type": "fixed-term",
+    "name": "D271",
+    "period": 271,
+    "subscriptionDays": 2,
+    "settlementDays": 7,
+    "annualInterestRate": "0.0345",
+    "limit": -1
+  }
+]
+
