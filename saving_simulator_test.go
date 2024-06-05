@@ -97,6 +97,90 @@ func Test_Simulate_Complex_Monthly_2Y(t *testing.T) {
 		options.Start(utils.ConvertStringToTime("2023-04-16", "2006-01-02")),
 		options.Years(2),
 		options.Frequency(constant.SavingFrequencyMonthly),
+		options.Step(3000),
+		options.ComplexSaving(10000, 366),
+	)
+	summary, acc, transactions := simulator.Simulate()
+
+	logrus.Infof("Total : %s,", acc.GetTotal().Round(2).String())
+	logrus.Infof("Principal : %s,", acc.Principal.Round(2).String())
+	logrus.Infof("Earnings : %s,", acc.GetEarnings().Round(2).String())
+	logrus.Infof("Balance : %s,", acc.Balance.Round(2).String())
+	logrus.Infof("CurrentPlus : %s,", acc.CurrentPlus.Round(2).String())
+	logrus.Infof("transactions: %d", len(transactions))
+	out := hepler.NewOutputor(summary, acc, transactions)
+	out.Output()
+
+}
+
+func Test_Simulate_Complex_Monthly_3k_3Y(t *testing.T) {
+	simulator := NewSimulator(
+		options.Start(utils.ConvertStringToTime("2023-04-16", "2006-01-02")),
+		options.Years(3),
+		options.Frequency(constant.SavingFrequencyMonthly),
+		options.Step(3000),
+		options.ComplexSaving(10000, 366),
+	)
+	summary, acc, transactions := simulator.Simulate()
+
+	logrus.Infof("Total : %s,", acc.GetTotal().Round(2).String())
+	logrus.Infof("Principal : %s,", acc.Principal.Round(2).String())
+	logrus.Infof("Earnings : %s,", acc.GetEarnings().Round(2).String())
+	logrus.Infof("Balance : %s,", acc.Balance.Round(2).String())
+	logrus.Infof("CurrentPlus : %s,", acc.CurrentPlus.Round(2).String())
+	logrus.Infof("transactions: %d", len(transactions))
+	out := hepler.NewOutputor(summary, acc, transactions)
+	out.Output()
+
+}
+
+func Test_Simulate_Complex_Monthly_3k_5Y(t *testing.T) {
+	simulator := NewSimulator(
+		options.Start(utils.ConvertStringToTime("2023-04-16", "2006-01-02")),
+		options.Years(5),
+		options.Frequency(constant.SavingFrequencyMonthly),
+		options.Step(3000),
+		options.ComplexSaving(10000, 366),
+	)
+	summary, acc, transactions := simulator.Simulate()
+
+	logrus.Infof("Total : %s,", acc.GetTotal().Round(2).String())
+	logrus.Infof("Principal : %s,", acc.Principal.Round(2).String())
+	logrus.Infof("Earnings : %s,", acc.GetEarnings().Round(2).String())
+	logrus.Infof("Balance : %s,", acc.Balance.Round(2).String())
+	logrus.Infof("CurrentPlus : %s,", acc.CurrentPlus.Round(2).String())
+	logrus.Infof("transactions: %d", len(transactions))
+	out := hepler.NewOutputor(summary, acc, transactions)
+	out.Output()
+
+}
+
+func Test_Simulate_Complex_Monthly_3k_10Y(t *testing.T) {
+	simulator := NewSimulator(
+		options.Start(utils.ConvertStringToTime("2023-04-16", "2006-01-02")),
+		options.Years(10),
+		options.Frequency(constant.SavingFrequencyMonthly),
+		options.Step(3000),
+		options.ComplexSaving(10000, 366),
+	)
+	summary, acc, transactions := simulator.Simulate()
+
+	logrus.Infof("Total : %s,", acc.GetTotal().Round(2).String())
+	logrus.Infof("Principal : %s,", acc.Principal.Round(2).String())
+	logrus.Infof("Earnings : %s,", acc.GetEarnings().Round(2).String())
+	logrus.Infof("Balance : %s,", acc.Balance.Round(2).String())
+	logrus.Infof("CurrentPlus : %s,", acc.CurrentPlus.Round(2).String())
+	logrus.Infof("transactions: %d", len(transactions))
+	out := hepler.NewOutputor(summary, acc, transactions)
+	out.Output()
+
+}
+
+func Test_Simulate_Complex_Monthly_2k_24Y(t *testing.T) {
+	simulator := NewSimulator(
+		options.Start(utils.ConvertStringToTime("2023-04-16", "2006-01-02")),
+		options.Years(24),
+		options.Frequency(constant.SavingFrequencyMonthly),
 		options.Step(2210),
 		options.ComplexSaving(10000, 366),
 	)
@@ -113,12 +197,14 @@ func Test_Simulate_Complex_Monthly_2Y(t *testing.T) {
 
 }
 
-func Test_Simulate_Complex_Monthly_24Y(t *testing.T) {
+func Test_Simulate_Complex_Monthly(t *testing.T) {
+	years := 24
+	amount := int64(3000)
 	simulator := NewSimulator(
 		options.Start(utils.ConvertStringToTime("2023-04-16", "2006-01-02")),
-		options.Years(24),
+		options.Years(years),
 		options.Frequency(constant.SavingFrequencyMonthly),
-		options.Step(2210),
+		options.Step(amount),
 		options.ComplexSaving(10000, 366),
 	)
 	summary, acc, transactions := simulator.Simulate()
